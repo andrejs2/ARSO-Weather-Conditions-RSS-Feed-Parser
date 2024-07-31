@@ -6,6 +6,6 @@
         "feedparser==6.0.8"
     ],
     "dependencies": [],
-    "codeowners": ["@your_github_username"],
+    "codeowners": ["@andrejs2"],
     "version": "1.0.0"
 }
