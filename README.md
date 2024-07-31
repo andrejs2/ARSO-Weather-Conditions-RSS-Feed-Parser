@@ -26,7 +26,7 @@ Add the following configuration to your `configuration.yaml` file:
 
 
 # configuration.yaml
-sensor:
+'''sensor:
   - platform: arso_weather_conditions  # Replace with the actual platform name of your component
 
 weather:
@@ -42,3 +42,4 @@ weather:
         {{ condition }}
       {% endif %}
     # ... (Add other templates for temperature, humidity, etc.)
+    '''
