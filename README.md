@@ -56,7 +56,7 @@ weather:
 ```
 
 
-## TO-DO
+## TO-DO:
 
 - add locations for weather conditions (Weather Observations - manned stations (20 stations) and unmanned station - automatic)
 - add forecast data to use it in ```forecast```
