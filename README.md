@@ -12,12 +12,7 @@ This custom component integrates weather data from the Slovenian Environment Age
 
 ## Installation
 
-1. **HACS (Recommended):**
-   - Install HACS if you haven't already.
-   - Add this repository as a custom repository in HACS.
-   - Search for "ARSO Weather Component" and install it.
-
-2. **Manual Installation:**
+**Manual Installation:**
    - Copy the contents of the `custom_components/arso_weather_conditions` directory into your Home Assistant's `custom_components` folder.
    - Restart Home Assistant.
 
@@ -56,7 +51,7 @@ weather:
 ```
 
 
-## TO-DO:
+## TO-DO
 
 - add locations for weather conditions (Weather Observations - manned stations (20 stations) and unmanned station - automatic)
 - add forecast data to use it in ```forecast```
