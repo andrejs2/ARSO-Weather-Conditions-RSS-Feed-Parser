@@ -1,0 +1,11 @@
+{
+    "domain": "arso_weather_conditions",
+    "name": "ARSO Weather Conditions",
+    "documentation": "https://www.home-assistant.io/integrations/arso_weather_conditions",
+    "requirements": [
+        "feedparser==6.0.8"
+    ],
+    "dependencies": [],
+    "codeowners": ["@your_github_username"],
+    "version": "1.0.0"
+}
