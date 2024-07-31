@@ -13,7 +13,7 @@ This custom component integrates weather data from the Slovenian Environment Age
 ## Installation
 
 **Manual Installation:**
-   - Copy the contents of the `custom_components/arso_weather_conditions` directory into your Home Assistant's `custom_components` folder.
+   - Copy the contents of the `custom_components/arso_weather_conditions` directory into your Home Assistant's `custom_components/` folder.
    - Restart Home Assistant.
 
 ## Configuration
