@@ -31,6 +31,7 @@ Add the following configuration to your `configuration.yaml` file:
 sensor:
   - platform: arso_weather_conditions
 
+weather:
   - platform: template
     name: "ARSO Weather Conditions Template"
     condition_template: >-
