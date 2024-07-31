@@ -29,6 +29,7 @@ sensor:
 weather:
   - platform: template
     name: "ARSO Weather Conditions Template"
+    unique_id: arso_weather_conditions_template
     condition_template: >-
       {% set condition = states('sensor.arso_weather_conditions') %}
       {% if condition == 'sunny' and is_state('sun.sun', 'above_horizon') %}
