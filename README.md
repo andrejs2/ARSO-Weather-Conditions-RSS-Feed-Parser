@@ -30,12 +30,12 @@ sensor:
 weather:
   - platform: template
     name: "ARSO Weather Conditions Template"
-    unique_id: arso_weather_conditions_template
-        condition_template: >-
+    condition_template: >-
       {% set condition = states('sensor.arso_weather_conditions') %}
       {% set condition_translations = {
         "Pretežno jasno": "sunny",
         "Jasno": "sunny",
+        "jasno": "sunny",
         "Delno oblačno": "partlycloudy",
         "Zmerno oblačno": "cloudy",
         "Pretežno oblačno": "cloudy",
@@ -70,7 +70,9 @@ weather:
     wind_bearing_template: "{{ state_attr('sensor.arso_weather_conditions', 'wind_bearing') if state_attr('sensor.arso_weather_conditions', 'wind_bearing') is not none else 'unknown' }}"
     visibility_template: "{{ state_attr('sensor.arso_weather_conditions', 'visibility') | float(0) if state_attr('sensor.arso_weather_conditions', 'visibility') is not none else 'unknown' }}"
     visibility_unit: "km"
+    attribution_template: "Data provided by Agencija Republike Slovenije za okolje"
     dew_point_template: "{{ state_attr('sensor.arso_weather_conditions', 'dew_point') | float(0) if state_attr('sensor.arso_weather_conditions', 'dew_point') is not none else 'unknown' }} °C"
+
 ```
 
 
