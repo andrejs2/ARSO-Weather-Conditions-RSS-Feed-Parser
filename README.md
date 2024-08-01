@@ -31,25 +31,46 @@ weather:
   - platform: template
     name: "ARSO Weather Conditions Template"
     unique_id: arso_weather_conditions_template
-    condition_template: >-
+        condition_template: >-
       {% set condition = states('sensor.arso_weather_conditions') %}
-      {% if condition == 'sunny' and is_state('sun.sun', 'above_horizon') %}
+      {% set condition_translations = {
+        "Pretežno jasno": "sunny",
+        "Jasno": "sunny",
+        "Delno oblačno": "partlycloudy",
+        "Zmerno oblačno": "cloudy",
+        "Pretežno oblačno": "cloudy",
+        "Oblačno": "cloudy",
+        "Megla": "fog",
+        "Megleno": "fog",
+        "Dež": "rainy",
+        "Deževno": "rainy",
+        "Plohe": "pouring",
+        "Nevihte": "lightning-rainy",
+        "Sneženje": "snowy",
+        "Snežna ploha": "snowy-rainy",
+        "toča": "hail",
+        "Izjemno": "exceptional",
+      } %}
+      {% set translated_condition = condition_translations.get(condition, condition) %} 
+
+      {% if translated_condition == 'sunny' and is_state('sun.sun', 'above_horizon') %}
         sunny
-      {% elif condition == 'sunny' and is_state('sun.sun', 'below_horizon') %}
+      {% elif translated_condition == 'sunny' and is_state('sun.sun', 'below_horizon') %}
         clear-night
       {% else %}
-        {{ condition }}
+        {{ translated_condition }}
       {% endif %}
-    temperature_template: "{{ state_attr('sensor.arso_weather_conditions', 'temperature') | float }}"
+    temperature_template: "{{ state_attr('sensor.arso_weather_conditions', 'temperature') | float(0) }}"
     temperature_unit: "°C"
-    humidity_template: "{{ state_attr('sensor.arso_weather_conditions', 'humidity') | float }}"
-    pressure_template: "{{ state_attr('sensor.arso_weather_conditions', 'pressure') | float }}"
+    humidity_template: "{{ state_attr('sensor.arso_weather_conditions', 'humidity') | float(0) if state_attr('sensor.arso_weather_conditions', 'humidity') is not none else 'unknown' }}"
+    pressure_template: "{{ state_attr('sensor.arso_weather_conditions', 'pressure') | float(0) if state_attr('sensor.arso_weather_conditions', 'pressure') is not none else 'unknown' }}"
     pressure_unit: "mbar"
-    wind_speed_template: "{{ state_attr('sensor.arso_weather_conditions', 'wind_speed') | float }}"
+    wind_speed_template: "{{ state_attr('sensor.arso_weather_conditions', 'wind_speed') | float(0) if state_attr('sensor.arso_weather_conditions', 'wind_speed') is not none else 'unknown' }}"
     wind_speed_unit: "m/s"
-    wind_bearing_template: "{{ state_attr('sensor.arso_weather_conditions', 'wind_bearing') }}"
-    visibility_template: "{{ state_attr('sensor.arso_weather_conditions', 'visibility') | float }}"
+    wind_bearing_template: "{{ state_attr('sensor.arso_weather_conditions', 'wind_bearing') if state_attr('sensor.arso_weather_conditions', 'wind_bearing') is not none else 'unknown' }}"
+    visibility_template: "{{ state_attr('sensor.arso_weather_conditions', 'visibility') | float(0) if state_attr('sensor.arso_weather_conditions', 'visibility') is not none else 'unknown' }}"
     visibility_unit: "km"
+    dew_point_template: "{{ state_attr('sensor.arso_weather_conditions', 'dew_point') | float(0) if state_attr('sensor.arso_weather_conditions', 'dew_point') is not none else 'unknown' }} °C"
 ```
 
 
